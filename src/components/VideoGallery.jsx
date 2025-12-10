@@ -1,13 +1,12 @@
 import { useState, useRef } from 'react';
 import { motion, useInView, AnimatePresence } from 'framer-motion';
-import { Play, X, Volume2, VolumeX, Maximize, Pause } from 'lucide-react';
+import { Play, X } from 'lucide-react';
 import './VideoGallery.css';
 
 const VideoGallery = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [activeVideo, setActiveVideo] = useState(null);
-  const videoRef = useRef(null);
 
   const problems = [
     {
@@ -33,8 +32,8 @@ const VideoGallery = () => {
         'Estiramiento de cuello: mover la cabeza suavemente hacia los lados y hacia abajo para relajar los musculos.',
         'Relajacion mandibular: abrir y cerrar la boca lentamente para eliminar la tension.'
       ],
-      videoSrc: null, // Placeholder - video pendiente
-      thumbnail: 'https://images.unsplash.com/photo-1598488035139-bdbb2231ce04?w=800&h=450&fit=crop',
+      videoSrc: '/EstiramientoVideo2.mp4',
+      thumbnail: '/thumbnail-fatiga.jpg',
     },
     {
       id: 3,
@@ -46,8 +45,8 @@ const VideoGallery = () => {
         'Burbujas en agua: soplar la pajilla dentro de un vaso con agua mientras se mantiene un sonido estable.',
         'Estos ejercicios disminuyen la presion en las cuerdas vocales y ayudan a mejorar la calidad vocal.'
       ],
-      videoSrc: null, // Placeholder - video pendiente
-      thumbnail: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=450&fit=crop',
+      videoSrc: '/video 3.mp4',
+      thumbnail: '/thumbnail-nodulos.jpg',
     },
   ];
 
@@ -166,25 +165,14 @@ const VideoGallery = () => {
               </button>
 
               <div className="video-modal__player">
-                {activeVideo.videoSrc ? (
-                  <video
-                    ref={videoRef}
-                    src={activeVideo.videoSrc}
-                    controls
-                    autoPlay
-                    className="video-modal__video"
-                  >
-                    Tu navegador no soporta el elemento de video.
-                  </video>
-                ) : (
-                  <div className="video-modal__placeholder">
-                    <img src={activeVideo.thumbnail} alt={activeVideo.exercise} />
-                    <div className="video-modal__placeholder-overlay">
-                      <Play size={64} />
-                      <p>Video disponible proximamente</p>
-                    </div>
-                  </div>
-                )}
+                <video
+                  src={activeVideo.videoSrc}
+                  controls
+                  autoPlay
+                  className="video-modal__video"
+                >
+                  Tu navegador no soporta el elemento de video.
+                </video>
               </div>
 
               <div className="video-modal__info">

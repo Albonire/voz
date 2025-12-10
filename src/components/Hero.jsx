@@ -64,23 +64,26 @@ const Hero = () => {
             <button className="btn btn-primary" onClick={scrollToIntro}>
               Comenzar
             </button>
-            <a href="#videos" className="btn btn-secondary">
+            <a href="#videos" className="btn btn-secondary" onClick={(e) => {
+              e.preventDefault();
+              document.querySelector('#videos')?.scrollIntoView({ behavior: 'smooth' });
+            }}>
               Ver Ejercicios
             </a>
           </motion.div>
         </motion.div>
-
-        <motion.button
-          className="hero__scroll-indicator"
-          onClick={scrollToIntro}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2 }}
-          aria-label="Scroll to content"
-        >
-          <ChevronDown size={28} />
-        </motion.button>
       </div>
+
+      <motion.button
+        className="hero__scroll-indicator"
+        onClick={scrollToIntro}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2 }}
+        aria-label="Scroll to content"
+      >
+        <ChevronDown size={24} />
+      </motion.button>
     </section>
   );
 };

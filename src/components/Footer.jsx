@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { Mic, Heart } from 'lucide-react';
+import { Mic, ExternalLink } from 'lucide-react';
 import './Footer.css';
 
 const Footer = () => {
@@ -9,6 +9,7 @@ const Footer = () => {
     { label: 'Inicio', href: '#inicio' },
     { label: 'Bienvenidos', href: '#introduccion' },
     { label: 'Ejercicios', href: '#videos' },
+    { label: 'Tips', href: '#tips' },
     { label: 'Contacto', href: '#contacto' },
   ];
 
@@ -28,7 +29,7 @@ const Footer = () => {
           <div className="footer__brand">
             <a href="#inicio" className="footer__logo" onClick={(e) => scrollToSection(e, '#inicio')}>
               <div className="footer__logo-icon">
-                <Mic size={20} />
+                <Mic size={18} />
               </div>
               <span>Voz Viva</span>
             </a>
@@ -59,9 +60,16 @@ const Footer = () => {
           <p className="footer__copyright">
             {currentYear} Voz Viva. Todos los derechos reservados.
           </p>
-          <p className="footer__made-with">
-            Hecho con <Heart size={14} className="footer__heart" /> para docentes
-          </p>
+          <motion.a
+            href="https://github.com/Albonire"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="footer__author"
+            whileHover={{ scale: 1.02 }}
+          >
+            Hecho por Albonire
+            <ExternalLink size={14} />
+          </motion.a>
         </div>
       </div>
     </footer>

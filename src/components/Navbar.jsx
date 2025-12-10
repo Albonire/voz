@@ -20,16 +20,21 @@ const Navbar = () => {
     { href: '#inicio', label: 'Inicio' },
     { href: '#introduccion', label: 'Bienvenidos' },
     { href: '#videos', label: 'Ejercicios' },
+    { href: '#tips', label: 'Tips' },
     { href: '#contacto', label: 'Contacto' },
   ];
 
-  const scrollToSection = (e, href) => {
-    e.preventDefault();
+  const scrollToSection = (href) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
       setIsMobileMenuOpen(false);
     }
+  };
+
+  const handleLinkClick = (e, href) => {
+    e.preventDefault();
+    scrollToSection(href);
   };
 
   return (
@@ -40,9 +45,9 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="navbar__container">
-        <a href="#inicio" className="navbar__logo" onClick={(e) => scrollToSection(e, '#inicio')}>
+        <a href="#inicio" className="navbar__logo" onClick={(e) => handleLinkClick(e, '#inicio')}>
           <div className="navbar__logo-icon">
-            <Mic size={24} />
+            <Mic size={18} />
           </div>
           <span className="navbar__logo-text">Voz Viva</span>
         </a>
@@ -59,7 +64,7 @@ const Navbar = () => {
               <a
                 href={link.href}
                 className="navbar__link"
-                onClick={(e) => scrollToSection(e, link.href)}
+                onClick={(e) => handleLinkClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -73,7 +78,7 @@ const Navbar = () => {
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           aria-label="Toggle menu"
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          {isMobileMenuOpen ? <X size={22} /> : <Menu size={22} />}
         </button>
 
         {/* Mobile Navigation */}
@@ -97,7 +102,7 @@ const Navbar = () => {
                     <a
                       href={link.href}
                       className="navbar__mobile-link"
-                      onClick={(e) => scrollToSection(e, link.href)}
+                      onClick={(e) => handleLinkClick(e, link.href)}
                     >
                       {link.label}
                     </a>
