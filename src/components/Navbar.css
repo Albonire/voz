@@ -5,11 +5,14 @@
   right: 0;
   z-index: 1000;
   height: var(--nav-height);
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.85) 0%, rgba(255, 255, 255, 0.4) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   transition: all var(--transition-base);
 }
 
 .navbar--scrolled {
-  background: var(--bg-glass);
+  background: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   box-shadow: var(--shadow-sm);
@@ -31,7 +34,7 @@
   align-items: center;
   gap: var(--space-sm);
   font-family: var(--font-heading);
-  font-size: 1.5rem;
+  font-size: 1.25rem;
   font-weight: 600;
   color: var(--text-primary);
   text-decoration: none;
@@ -46,8 +49,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   background: linear-gradient(135deg, var(--accent), var(--accent-hover));
   border-radius: var(--radius-md);
   color: white;

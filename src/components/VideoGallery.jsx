@@ -21,7 +21,7 @@ const VideoGallery = () => {
         'Respiracion con apoyo: inhalar inflando el abdomen y hablar sin apretar la garganta.'
       ],
       videoSrc: '/Calentamiento vocal.mp4',
-      thumbnail: 'https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?w=800&h=450&fit=crop',
+      thumbnail: '/thumbnail-calentamiento.jpg',
     },
     {
       id: 2,

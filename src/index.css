@@ -65,7 +65,7 @@
 
   /* Layout */
   --max-width: 1200px;
-  --nav-height: 72px;
+  --nav-height: 56px;
 }
 
 html {
@@ -275,7 +275,7 @@ a {
 /* Responsive */
 @media (max-width: 768px) {
   :root {
-    --nav-height: 64px;
+    --nav-height: 48px;
   }
 
   .section {
