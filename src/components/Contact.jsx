@@ -1,14 +1,13 @@
 import { useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { MessageCircle, Mail, MapPin, Phone, Send, Clock } from 'lucide-react';
+import { MessageCircle, MapPin, Phone, Send } from 'lucide-react';
 import './Contact.css';
 
 const Contact = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  // WhatsApp number placeholder - replace with actual number
-  const whatsappNumber = "+1234567890";
+  const whatsappNumber = "573125250624";
   const whatsappMessage = encodeURIComponent("Hola, me gustaria obtener mas informacion sobre el cuidado de la voz.");
   const whatsappLink = `https://wa.me/${whatsappNumber}?text=${whatsappMessage}`;
 
@@ -16,25 +15,13 @@ const Contact = () => {
     {
       icon: Phone,
       label: 'Telefono',
-      value: '+1 (234) 567-890',
-      href: 'tel:+1234567890',
-    },
-    {
-      icon: Mail,
-      label: 'Email',
-      value: 'info@vozcare.com',
-      href: 'mailto:info@vozcare.com',
+      value: '+57 312 525 0624',
+      href: 'tel:+573125250624',
     },
     {
       icon: MapPin,
       label: 'Ubicacion',
-      value: 'Ciudad, Pais',
-      href: '#',
-    },
-    {
-      icon: Clock,
-      label: 'Horario',
-      value: 'Lun - Vie: 9am - 6pm',
+      value: 'Pamplona, Colombia',
       href: '#',
     },
   ];
@@ -51,7 +38,7 @@ const Contact = () => {
           <h2>Contactanos</h2>
           <p>
             Estamos aqui para ayudarte. Comunicate con nosotros para
-            resolver tus dudas o agendar una consulta.
+            resolver tus dudas.
           </p>
         </motion.div>
 
@@ -103,7 +90,7 @@ const Contact = () => {
               <h3 className="whatsapp-card__title">Escribenos por WhatsApp</h3>
               <p className="whatsapp-card__text">
                 Respuesta rapida y personalizada. Estamos disponibles para
-                atenderte de lunes a viernes.
+                atenderte y resolver todas tus dudas sobre el cuidado vocal.
               </p>
               <motion.a
                 href={whatsappLink}
