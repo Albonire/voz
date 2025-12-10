@@ -24,17 +24,27 @@ const Navbar = () => {
     { href: '#contacto', label: 'Contacto' },
   ];
 
-  const scrollToSection = (href) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-      setIsMobileMenuOpen(false);
-    }
-  };
-
-  const handleLinkClick = (e, href) => {
+  const handleNavClick = (e, href) => {
     e.preventDefault();
-    scrollToSection(href);
+    e.stopPropagation();
+    
+    // Close mobile menu first
+    setIsMobileMenuOpen(false);
+    
+    // Small delay to let menu close, then scroll
+    setTimeout(() => {
+      const element = document.querySelector(href);
+      if (element) {
+        const navHeight = 56; // var(--nav-height)
+        const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+        const offsetPosition = elementPosition - navHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+    }, 100);
   };
 
   return (
@@ -45,7 +55,7 @@ const Navbar = () => {
       transition={{ duration: 0.6, ease: 'easeOut' }}
     >
       <div className="navbar__container">
-        <a href="#inicio" className="navbar__logo" onClick={(e) => handleLinkClick(e, '#inicio')}>
+        <a href="#inicio" className="navbar__logo" onClick={(e) => handleNavClick(e, '#inicio')}>
           <div className="navbar__logo-icon">
             <Mic size={18} />
           </div>
@@ -64,7 +74,7 @@ const Navbar = () => {
               <a
                 href={link.href}
                 className="navbar__link"
-                onClick={(e) => handleLinkClick(e, link.href)}
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.label}
               </a>
@@ -99,13 +109,13 @@ const Navbar = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.05 * index }}
                   >
-                    <a
-                      href={link.href}
+                    <button
+                      type="button"
                       className="navbar__mobile-link"
-                      onClick={(e) => handleLinkClick(e, link.href)}
+                      onClick={(e) => handleNavClick(e, link.href)}
                     >
                       {link.label}
-                    </a>
+                    </button>
                   </motion.li>
                 ))}
               </ul>
